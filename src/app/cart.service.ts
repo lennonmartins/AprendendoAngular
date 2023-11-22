@@ -26,12 +26,12 @@ export class CartService {
   }
 
   getShippingPrices(){
-    return this.httpcliente.get('/assets/shipping.json')
-      .pipe(map((data) =>{
-        return data.map((shippingPrice) => ({
-          type: shippingPrice.type,
-          price: shippingPrice.price,
-        }));
-      }));
+    return this.httpcliente.get<{type: string, price: number}[]>('/assets/shipping.json');
+      // .pipe(map((data) =>{
+      //   return data.map((shippingPrice) => ({
+      //     type: shippingPrice.type,
+      //     price: shippingPrice.price,
+      //   }));
+      // }));
   }
 }
